@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101014">
+<meta name="description" content="A Capitol-inspired tribute name picker for events.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./styles.css">
+<title>THE REAPING — Capitol Edition</title>
+</head>
+<body>
+<div class="ambient"></div>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="The Reaping home"><span class="brand-mark">✦</span><span>THE REAPING</span></a>
+  <div class="top-actions"><span class="edition">CAPITOL EDITION</span><button id="installBtn" class="quiet hidden">Install app</button><button id="soundToggle" class="quiet" aria-pressed="true">♫ Sound on</button></div>
+</header>
+<main>
+<section id="homeView" class="view">
+  <div class="hero">
+    <p class="eyebrow">OFFICIAL CAPITOL EVENT SELECTION SYSTEM</p>
+    <div class="seal">✦</div>
+    <h1>MAY THE ODDS<br><em>BE EVER IN YOUR FAVOR</em></h1>
+    <p class="sub">THE REAPING CEREMONY</p>
+    <div class="event-line"><input id="eventName" maxlength="60" value="THE GRAND REAPING" aria-label="Event name"></div>
+    <button id="enterBtn" class="primary">ENTER THE REAPING <span>→</span></button>
+    <p class="micro">A NAME WILL BE CHOSEN. THE FATE IS SEALED.</p>
+  </div>
+  <div class="district-preview" id="districtPreview"></div>
+</section>
+
+<section id="appView" class="view hidden">
+  <div class="section-heading">
+    <div><p class="eyebrow">CAPITOL CONTROL ROOM</p><h2>Tribute Registry</h2></div>
+    <button id="backHome" class="quiet">← Home</button>
+  </div>
+  <div class="tabs">
+    <button class="tab active" data-tab="registry">Registry</button>
+    <button class="tab" data-tab="ceremony">Reaping</button>
+    <button class="tab" data-tab="history">History</button>
+  </div>
+
+  <section id="registryTab" class="tab-panel">
+    <div class="panel">
+      <div class="panel-title"><div><p class="eyebrow">GROUPINGS</p><h3>Choose a district</h3></div><span class="count" id="totalCount">35 tributes</span></div>
+      <div class="district-grid" id="districtGrid"></div>
+      <div class="selected-district" id="selectedDistrict"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title"><div><p class="eyebrow">TRIBUTE ROSTER</p><h3 id="rosterTitle">All Districts</h3></div><span class="count" id="remainingCount">35 remaining</span></div>
+      <form id="addForm" class="add-form"><input id="newName" placeholder="Add a participant name…" maxlength="60" aria-label="New participant name"><button class="gold-btn" type="submit">＋ Add</button></form>
+      <textarea id="bulkNames" rows="3" placeholder="Or paste multiple names — one per line"></textarea>
+      <button id="bulkAdd" class="outline-btn">Add names from list</button>
+      <ul id="roster" class="roster"></ul>
+      <p class="hint">Names already selected are marked and won't be drawn again until you reset the event.</p>
+    </div>
+  </section>
+
+  <section id="ceremonyTab" class="tab-panel hidden">
+    <div class="ceremony-card">
+      <p class="eyebrow">OFFICIAL REAPING CEREMONY</p>
+      <div id="ceremonyDistrict" class="ceremony-emblem"><span>✦</span></div>
+      <p class="gold-label" id="ceremonyGroup">ALL DISTRICTS</p>
+      <div class="reveal-frame">
+        <p class="eyebrow">THE CHOSEN TRIBUTE</p>
+        <div id="chosenName" class="chosen-name">???????</div>
+        <p id="chosenMeta" class="chosen-meta">AWAITING THE CAPITOL'S SELECTION</p>
+      </div>
+      <div id="countdown" class="countdown hidden">5</div>
+      <button id="reapBtn" class="reap-btn">✦ &nbsp; BEGIN THE REAPING</button>
+      <p id="remainingLabel" class="hint">35 eligible tributes remain</p>
+      <div class="ceremony-actions"><button id="hideReveal" class="outline-btn">Hide reveal</button><button id="fullscreenBtn" class="outline-btn">⛶ Presentation mode</button></div>
+    </div>
+  </section>
+
+  <section id="historyTab" class="tab-panel hidden">
+    <div class="panel">
+      <div class="panel-title"><div><p class="eyebrow">THE RECORD</p><h3>Reaping History</h3></div><button id="exportBtn" class="outline-btn">Export CSV</button></div>
+      <ol id="historyList" class="history-list"><li class="empty">No tributes have been selected yet.</li></ol>
+      <button id="resetBtn" class="danger-btn">↻ Reset this event</button>
+    </div>
+  </section>
+</section>
+</main>
+<footer><span>THE REAPING · CAPITOL EDITION</span><span>MAY THE ODDS BE EVER IN YOUR FAVOR</span></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="./app.js"></script>
+</body></html>

@@ -1,0 +1,1 @@
+District emblem crops are derived from the image supplied in this conversation. The reveal sound effect was synthesized specifically for this app package. Fonts are loaded from Google Fonts when online; local fallbacks are included.
